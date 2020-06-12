@@ -15,17 +15,16 @@ end
 
 def consolidate_cart(cart)
   output = []
-
   cart.each do |element|
-    if output.include?(element)
-      element[:count] += 1
+    check_object = find_item_by_name_in_collection(element[:item], cart)
+    if output.include?(check_object)
+      check_object[:count] += 1
     else
       element[:count] = 1
       output.push(element)
     end
-
   end
-  output
+  return output
 end
 
 
